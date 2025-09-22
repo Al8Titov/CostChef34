@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: costchef-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - MONGODB_URI=mongodb+srv://Buck:Trevogavjope@cluster0.ruk1ewc.mongodb.net/costchef
+      - JWT_SECRET=your-super-secret-jwt-key-here-change-in-production
+      - CORS_ORIGIN=http://localhost:3000
+    restart: unless-stopped
+    networks:
+      - costchef-network
+
+  frontend:
+    build: ./frontend
+    container_name: costchef-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - costchef-network
+
+networks:
+  costchef-network:
+    driver: bridge
