@@ -10,26 +10,26 @@ router.use(authenticateToken);
 const productValidation = [
   body('name')
     .notEmpty()
-    .withMessage('Product name is required')
+    .withMessage('Название продукта обязательно')
     .trim(),
   body('category_id')
     .isInt({ min: 1, max: 10 })
-    .withMessage('Category ID must be between 1 and 10'),
+    .withMessage('ID категории должен быть от 1 до 10'),
   body('category_name')
     .notEmpty()
-    .withMessage('Category name is required'),
+    .withMessage('Название категории обязательно'),
   body('quantity')
     .isFloat({ min: 0 })
-    .withMessage('Quantity must be a positive number'),
+    .withMessage('Количество должно быть положительным числом'),
   body('unit')
     .isIn(['kg', 'l', 'шт'])
-    .withMessage('Unit must be kg, l, or шт'),
+    .withMessage('Единица измерения должна быть kg, l или шт'),
   body('total_price')
     .isFloat({ min: 0 })
-    .withMessage('Total price must be a positive number'),
+    .withMessage('Общая цена должна быть положительным числом'),
   body('price_per_unit')
     .isFloat({ min: 0 })
-    .withMessage('Price per unit must be a positive number')
+    .withMessage('Цена за единицу должна быть положительным числом')
 ];
 
 router.get('/', getProducts);

@@ -15,9 +15,13 @@ export const getProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
+    console.log('Received product data:', req.body);
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      console.log('Validation errors:', errors.array());
+      const errorMessage = errors.array().map(err => err.msg).join(', ');
+      return res.status(400).json({ error: errorMessage });
     }
 
     const productData = {
@@ -25,12 +29,18 @@ export const createProduct = async (req, res) => {
       user_id: req.user._id
     };
 
+    console.log('Product data to save:', productData);
+
     const product = new Product(productData);
     await product.save();
 
     res.status(201).json(product);
   } catch (error) {
     console.error('Create product error:', error);
+    if (error.name === 'ValidationError') {
+      const errorMessage = Object.values(error.errors).map(err => err.message).join(', ');
+      return res.status(400).json({ error: errorMessage });
+    }
     res.status(500).json({ error: 'Server error creating product' });
   }
 };
