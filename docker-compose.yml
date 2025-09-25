@@ -20,7 +20,7 @@ services:
     ports:
       - "80:80"
     environment:
-      VITE_API_URL: http://109.73.198.35:3002/api
+      VITE_API_URL: /api
     depends_on:
       - backend
     restart: unless-stopped
