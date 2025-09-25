@@ -32,10 +32,16 @@ const WarehouseContainer = ({ className }) => {
 			
 			try {
 				const userProducts = await getUserProducts();
-				setProducts(userProducts);
-				setFilteredProducts(userProducts);
+				console.log('Загруженные продукты:', userProducts);
+				
+				// Убеждаемся, что userProducts - это массив
+				const productsArray = Array.isArray(userProducts) ? userProducts : [];
+				setProducts(productsArray);
+				setFilteredProducts(productsArray);
 			} catch (error) {
 				console.error('Ошибка загрузки продуктов:', error);
+				setProducts([]);
+				setFilteredProducts([]);
 			}
 		};
 

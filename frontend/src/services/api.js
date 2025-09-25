@@ -79,7 +79,9 @@ class ApiService {
   }
 
   async getProducts() {
-    return this.request('/products');
+    const result = await this.request('/products');
+    console.log('API getProducts result:', result);
+    return result;
   }
 
   async createProduct(productData) {
@@ -103,7 +105,9 @@ class ApiService {
   }
 
   async getDishes() {
-    return this.request('/dishes');
+    const result = await this.request('/dishes');
+    console.log('API getDishes result:', result);
+    return result;
   }
 
   async createDish(dishData) {

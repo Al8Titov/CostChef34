@@ -34,10 +34,16 @@ const DishesContainer = ({ className }) => {
 			
 			try {
 				const userDishes = await getUserDishes();
-				setDishes(userDishes);
-				setFilteredDishes(userDishes);
+				console.log('Загруженные блюда:', userDishes);
+				
+				// Убеждаемся, что userDishes - это массив
+				const dishesArray = Array.isArray(userDishes) ? userDishes : [];
+				setDishes(dishesArray);
+				setFilteredDishes(dishesArray);
 			} catch (error) {
 				console.error('Ошибка загрузки блюд:', error);
+				setDishes([]);
+				setFilteredDishes([]);
 			}
 		};
 
