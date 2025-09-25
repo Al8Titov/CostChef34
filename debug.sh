@@ -15,7 +15,7 @@ docker-compose logs --tail=20 frontend
 
 echo ""
 echo "🌐 Проверка API:"
-curl -f http://localhost:3001/api/health || echo "❌ API недоступен"
+curl -f http://localhost:3002/api/health || echo "❌ API недоступен"
 
 echo ""
 echo "🌐 Проверка Frontend:"

@@ -52,8 +52,8 @@ docker-compose up -d --build
 ## 🌐 Доступ к приложению
 
 - **Веб-интерфейс**: http://109.73.198.35
-- **API Backend**: http://109.73.198.35:3001/api
-- **Health Check**: http://109.73.198.35:3001/api/health
+- **API Backend**: http://109.73.198.35:3002/api
+- **Health Check**: http://109.73.198.35:3002/api/health
 
 ## 🔧 Управление приложением
 
@@ -82,7 +82,7 @@ docker-compose down
 При проблемах проверьте:
 - Статус: `docker-compose ps`
 - Логи: `docker-compose logs`
-- API: `curl http://109.73.198.35:3001/api/health`
+- API: `curl http://109.73.198.35:3002/api/health`
 
 ## 📄 Лицензия
 
