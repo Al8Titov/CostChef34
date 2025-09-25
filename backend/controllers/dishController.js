@@ -15,9 +15,13 @@ export const getDishes = async (req, res) => {
 
 export const createDish = async (req, res) => {
   try {
+    console.log('Received dish data:', req.body);
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      console.log('Validation errors:', errors.array());
+      const errorMessage = errors.array().map(err => err.msg).join(', ');
+      return res.status(400).json({ error: errorMessage });
     }
 
     const dishData = {
@@ -25,12 +29,18 @@ export const createDish = async (req, res) => {
       user_id: req.user._id
     };
 
+    console.log('Dish data to save:', dishData);
+
     const dish = new Dish(dishData);
     await dish.save();
 
     res.status(201).json(dish);
   } catch (error) {
     console.error('Create dish error:', error);
+    if (error.name === 'ValidationError') {
+      const errorMessage = Object.values(error.errors).map(err => err.message).join(', ');
+      return res.status(400).json({ error: errorMessage });
+    }
     res.status(500).json({ error: 'Server error creating dish' });
   }
 };
