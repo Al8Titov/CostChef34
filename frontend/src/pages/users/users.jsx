@@ -66,15 +66,7 @@ const UsersContainer = ({ className }) => {
 
 			await updateUserRole(selectedUser.id, newRoleId);
 			
-			setUsers(prev => prev.map(user => 
-				user.id === selectedUser.id 
-					? { 
-						...user, 
-						role_id: newRoleId, 
-						role_name: newRole.name 
-					}
-					: user
-			));
+			refreshUsers();
 
 			setIsEditModalOpen(false);
 			setSelectedUser(null);

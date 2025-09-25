@@ -8,7 +8,19 @@ export const getUsers = async (req, res) => {
     const users = await User.find({}, 'login nickname email role_id is_online last_activity createdAt')
       .sort({ createdAt: -1 });
     
-    res.json(users);
+    const formattedUsers = users.map(user => ({
+      id: user._id,
+      login: user.login,
+      nickname: user.nickname,
+      email: user.email,
+      role_id: user.role_id,
+      role_name: user.role_id === 0 ? 'Администратор' : user.role_id === 1 ? 'Пользователь' : 'Гость',
+      is_online: user.is_online,
+      last_activity: user.last_activity,
+      registered_at: user.createdAt
+    }));
+    
+    res.json(formattedUsers);
   } catch (error) {
     console.error('Get users error:', error);
     res.status(500).json({ error: 'Server error getting users' });
