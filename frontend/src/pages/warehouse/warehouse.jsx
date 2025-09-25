@@ -49,7 +49,9 @@ const WarehouseContainer = ({ className }) => {
 	}, [currentUser]);
 
 	useEffect(() => {
-		let filtered = [...products];
+		// Убеждаемся, что products - это массив
+		const productsArray = Array.isArray(products) ? products : [];
+		let filtered = [...productsArray];
 
 		if (searchQuery) {
 			filtered = filterBySearch(filtered, searchQuery, 'name');

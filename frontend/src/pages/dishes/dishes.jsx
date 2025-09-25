@@ -51,7 +51,9 @@ const DishesContainer = ({ className }) => {
 	}, [currentUser]);
 
 	useEffect(() => {
-		let filtered = [...dishes];
+		// Убеждаемся, что dishes - это массив
+		const dishesArray = Array.isArray(dishes) ? dishes : [];
+		let filtered = [...dishesArray];
 
 		if (searchQuery) {
 			filtered = filterBySearch(filtered, searchQuery, 'name');
