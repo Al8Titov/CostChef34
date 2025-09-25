@@ -7,7 +7,7 @@ const ingredientSchema = new mongoose.Schema({
   },
   product_id: {
     type: String,
-    required: true
+    required: false
   },
   name: {
     type: String,
