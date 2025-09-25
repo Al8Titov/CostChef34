@@ -10,6 +10,12 @@ import PropTypes from 'prop-types';
 const UsersContainer = ({ className }) => {
 	const currentUser = useSelector((state) => state.user);
 	const { users, loading, error, refreshUsers } = useUsers();
+	
+	// Отладочная информация
+	console.log('Users component - currentUser:', currentUser);
+	console.log('Users component - users:', users);
+	console.log('Users component - loading:', loading);
+	console.log('Users component - error:', error);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [editForm, setEditForm] = useState({
@@ -77,6 +83,15 @@ const UsersContainer = ({ className }) => {
 	};
 
 	const handleDeleteUser = async (userId) => {
+		console.log('Попытка удаления пользователя:', userId);
+		console.log('Текущий пользователь:', currentUser);
+		console.log('Все пользователи:', users);
+		
+		if (!userId) {
+			alert('Ошибка: ID пользователя не определен');
+			return;
+		}
+		
 		if (userId === currentUser.id) {
 			alert('Вы не можете удалить свой аккаунт');
 			return;
