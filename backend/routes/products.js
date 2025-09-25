@@ -5,10 +5,8 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// All routes require authentication
 router.use(authenticateToken);
 
-// Validation rules
 const productValidation = [
   body('name')
     .notEmpty()
@@ -34,7 +32,6 @@ const productValidation = [
     .withMessage('Price per unit must be a positive number')
 ];
 
-// Routes
 router.get('/', getProducts);
 router.post('/', productValidation, createProduct);
 router.put('/:id', productValidation, updateProduct);

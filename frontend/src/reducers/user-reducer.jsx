@@ -2,7 +2,6 @@ import { ACTION_TYPE } from '../action';
 import { ROLE } from '../constans';
 import { getFromStorage, saveToStorage } from '../utils/dataUtils';
 
-// Восстанавливаем пользователя из localStorage при инициализации
 const getInitialUserState = () => {
 	const savedUser = getFromStorage('user', null);
 	return savedUser || {
@@ -28,12 +27,10 @@ export const userReducer = (state = initialUserState, action) => {
 				...state,
 				...action.payload,
 			};
-			// Сохраняем пользователя в localStorage
 			saveToStorage('user', newUser);
 			return newUser;
 		}
 		case 'LOGOUT': {
-			// Очищаем localStorage при выходе
 			localStorage.removeItem('user');
 			return {
 				id: null,

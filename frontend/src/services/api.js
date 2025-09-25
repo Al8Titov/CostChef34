@@ -44,7 +44,6 @@ class ApiService {
     }
   }
 
-  // Auth endpoints
   async register(userData) {
     return this.request('/auth/register', {
       method: 'POST',
@@ -79,7 +78,6 @@ class ApiService {
     return this.request('/auth/profile');
   }
 
-  // Products endpoints
   async getProducts() {
     return this.request('/products');
   }
@@ -104,7 +102,6 @@ class ApiService {
     });
   }
 
-  // Dishes endpoints
   async getDishes() {
     return this.request('/dishes');
   }
@@ -129,7 +126,6 @@ class ApiService {
     });
   }
 
-  // Users endpoints (admin only)
   async getUsers() {
     return this.request('/users');
   }

@@ -5,7 +5,6 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Validation rules
 const registerValidation = [
   body('login')
     .isLength({ min: 3, max: 15 })
@@ -35,7 +34,6 @@ const loginValidation = [
     .withMessage('Password is required')
 ];
 
-// Routes
 router.post('/register', registerValidation, register);
 router.post('/login', loginValidation, login);
 router.post('/logout', authenticateToken, logout);

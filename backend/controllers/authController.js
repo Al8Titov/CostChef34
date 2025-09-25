@@ -11,7 +11,6 @@ export const register = async (req, res) => {
 
     const { login, password, nickname, email } = req.body;
 
-    // Check if user already exists
     const existingUser = await User.findOne({ 
       $or: [{ login }, { email }] 
     });
@@ -22,7 +21,6 @@ export const register = async (req, res) => {
       });
     }
 
-    // Create new user
     const user = new User({
       login,
       password,
@@ -33,7 +31,6 @@ export const register = async (req, res) => {
 
     await user.save();
 
-    // Generate JWT token
     const token = jwt.sign(
       { userId: user._id, role_id: user.role_id },
       process.env.JWT_SECRET,
@@ -66,24 +63,20 @@ export const login = async (req, res) => {
 
     const { login, password } = req.body;
 
-    // Find user by login
     const user = await User.findOne({ login });
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    // Update user status
     user.is_online = true;
     user.last_activity = new Date();
     await user.save();
 
-    // Generate JWT token
     const token = jwt.sign(
       { userId: user._id, role_id: user.role_id },
       process.env.JWT_SECRET,

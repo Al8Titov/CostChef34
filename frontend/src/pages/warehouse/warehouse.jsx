@@ -134,7 +134,6 @@ const WarehouseContainer = ({ className }) => {
 		};
 
 		try {
-			// Сохраняем в db.json через API
 			const createdProduct = await createProduct(product);
 			setProducts(prev => [createdProduct, ...prev]);
 			setFilteredProducts(prev => [createdProduct, ...prev]);

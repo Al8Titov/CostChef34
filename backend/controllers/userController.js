@@ -62,7 +62,6 @@ export const deleteUser = async (req, res) => {
       return res.status(400).json({ error: 'Cannot delete your own account' });
     }
 
-    // Delete user and all related data
     await Promise.all([
       User.findByIdAndDelete(userId),
       Product.deleteMany({ user_id: userId }),

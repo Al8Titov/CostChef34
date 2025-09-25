@@ -20,7 +20,6 @@ export const createSession = (roleId) => {
 			break;
 		}
 		default:
-		// ничего не делать
 	}
 	return session;
 };

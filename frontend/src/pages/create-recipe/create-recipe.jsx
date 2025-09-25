@@ -393,7 +393,6 @@ CreateRecipeContainer.propTypes = {
 	className: PropTypes.string,
 };
 
-// Стили
 const PageHeader = styled.div`
 	margin-bottom: 20px;
 `;

@@ -5,10 +5,8 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// All routes require authentication
 router.use(authenticateToken);
 
-// Validation rules
 const dishValidation = [
   body('name')
     .notEmpty()
@@ -40,7 +38,6 @@ const dishValidation = [
     .withMessage('Ingredient cost must be a positive number')
 ];
 
-// Routes
 router.get('/', getDishes);
 router.post('/', dishValidation, createDish);
 router.put('/:id', dishValidation, updateDish);

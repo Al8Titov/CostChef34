@@ -16,7 +16,6 @@ const UsersContainer = ({ className }) => {
 		role_id: ''
 	});
 
-	// Проверяем права доступа
 	if (!isAdmin(currentUser)) {
 		return (
 			<div className={className}>
@@ -67,7 +66,6 @@ const UsersContainer = ({ className }) => {
 
 			await updateUserRole(selectedUser.id, newRoleId);
 			
-			// Обновляем локальное состояние
 			setUsers(prev => prev.map(user => 
 				user.id === selectedUser.id 
 					? { 
