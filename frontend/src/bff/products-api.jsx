@@ -2,8 +2,18 @@ import apiService from '../services/api';
 
 export const getUserProducts = async () => {
 	try {
-		const products = await apiService.getProducts();
-		return products;
+		const response = await apiService.getProducts();
+		console.log('Products API response:', response);
+		
+		// Извлекаем данные из ответа
+		if (response && response.data && Array.isArray(response.data)) {
+			return response.data;
+		} else if (Array.isArray(response)) {
+			return response;
+		} else {
+			console.warn('Unexpected products response format:', response);
+			return [];
+		}
 	} catch (error) {
 		console.error('Ошибка при загрузке продуктов:', error);
 		return [];
@@ -12,9 +22,16 @@ export const getUserProducts = async () => {
 
 export const createProduct = async (productData) => {
 	try {
-		const createdProduct = await apiService.createProduct(productData);
-		console.log('Продукт создан:', createdProduct);
-		return createdProduct;
+		console.log('Отправляем данные продукта:', productData);
+		const response = await apiService.createProduct(productData);
+		console.log('Продукт создан:', response);
+		
+		// Извлекаем данные из ответа
+		if (response && response.data) {
+			return response.data;
+		} else {
+			return response;
+		}
 	} catch (error) {
 		console.error('Ошибка при создании продукта:', error);
 		throw error;

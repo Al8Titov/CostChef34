@@ -2,8 +2,18 @@ import apiService from '../services/api';
 
 export const getUserDishes = async () => {
 	try {
-		const dishes = await apiService.getDishes();
-		return dishes;
+		const response = await apiService.getDishes();
+		console.log('Dishes API response:', response);
+		
+		// Извлекаем данные из ответа
+		if (response && response.data && Array.isArray(response.data)) {
+			return response.data;
+		} else if (Array.isArray(response)) {
+			return response;
+		} else {
+			console.warn('Unexpected dishes response format:', response);
+			return [];
+		}
 	} catch (error) {
 		console.error('Ошибка при загрузке блюд:', error);
 		return [];
