@@ -34,7 +34,6 @@ const DishesContainer = ({ className }) => {
 			
 			try {
 				const userDishes = await getUserDishes();
-				console.log('Загруженные блюда:', userDishes);
 				
 				// Убеждаемся, что userDishes - это массив
 				const dishesArray = Array.isArray(userDishes) ? userDishes : [];
@@ -297,6 +296,18 @@ const DishesGrid = styled.div`
 	gap: 30px;
 	margin-bottom: 40px;
 	justify-content: center;
+
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(auto-fill, 300px);
+		gap: 20px;
+		margin-bottom: 20px;
+	}
+
+	@media (max-width: 480px) {
+		grid-template-columns: 1fr;
+		gap: 15px;
+		margin-bottom: 15px;
+	}
 `;
 
 const DishCard = styled.div`
@@ -497,4 +508,12 @@ export const Dishes = styled(DishesContainer)`
 	padding: 20px;
 	max-width: 1200px;
 	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		padding: 15px;
+	}
+
+	@media (max-width: 480px) {
+		padding: 10px;
+	}
 `;

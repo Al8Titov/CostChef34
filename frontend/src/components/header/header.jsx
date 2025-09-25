@@ -33,7 +33,8 @@ HeaderContainer.propTypes = {
 export const Header = styled(HeaderContainer)`
 	position: fixed;
 	top: 0;
-	width: 1350px;
+	width: 100%;
+	max-width: 1350px;
 	height: 80px;
 	background: linear-gradient(135deg, #667eea 0%, #5a6fd8 30%, #4c63d2 60%, #3e57cc 100%);
 	backdrop-filter: blur(20px);
@@ -47,4 +48,18 @@ export const Header = styled(HeaderContainer)`
 	align-items: center;
 	padding: 0 30px;
 	z-index: 100;
+
+	@media (max-width: 768px) {
+		height: 60px;
+		padding: 0 15px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+
+	@media (max-width: 480px) {
+		height: 50px;
+		padding: 0 10px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
 `;

@@ -1,14 +1,3 @@
-/**
- * @fileoverview Главный компонент приложения CostChef
- * 
- * Этот файл содержит основной компонент приложения, который:
- * - Настраивает маршрутизацию между страницами
- * - Определяет общую структуру приложения (шапка, контент, футер)
- * - Управляет основными стилями приложения
- * 
- * @author CostChef Team
- * @version 1.0.0
- */
 
 import { Routes, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
@@ -19,21 +8,34 @@ const AppColumn = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 1350px;
+	width: 100%;
+	max-width: 1350px;
 	min-height: 100vh;
 	margin: 0 auto;
 	background-color: #f4f3daff;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+
+	@media (max-width: 480px) {
+		width: 100%;
+	}
 `;
 
 const Content = styled.div`
 	padding: 100px 0 90px 0;
 	flex: 1;
+
+	@media (max-width: 768px) {
+		padding: 80px 0 70px 0;
+	}
+
+	@media (max-width: 480px) {
+		padding: 70px 0 60px 0;
+	}
 `;
 
-/**
- * Основной компонент приложения CostChef
- * @returns {JSX.Element} Приложение
- */
 export const FoodCostManager = () => {
 	return (
 		<AppColumn>

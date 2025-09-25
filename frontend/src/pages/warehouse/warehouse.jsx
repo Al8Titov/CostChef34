@@ -32,7 +32,6 @@ const WarehouseContainer = ({ className }) => {
 			
 			try {
 				const userProducts = await getUserProducts();
-				console.log('Загруженные продукты:', userProducts);
 				
 				// Убеждаемся, что userProducts - это массив
 				const productsArray = Array.isArray(userProducts) ? userProducts : [];
@@ -448,11 +447,31 @@ const TableContainer = styled.div`
 	overflow: hidden;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 	margin-bottom: 40px;
+
+	@media (max-width: 768px) {
+		border-radius: 10px;
+		margin-bottom: 20px;
+		overflow-x: auto;
+	}
+
+	@media (max-width: 480px) {
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
 `;
 
 const Table = styled.table`
 	width: 100%;
 	border-collapse: collapse;
+	min-width: 600px;
+
+	@media (max-width: 768px) {
+		min-width: 500px;
+	}
+
+	@media (max-width: 480px) {
+		min-width: 400px;
+	}
 `;
 
 const TableHeader = styled.thead`
@@ -475,6 +494,16 @@ const TableHeaderCell = styled.th`
 	font-weight: 600;
 	color: #2c3e50;
 	border-bottom: 2px solid #e0e0e0;
+
+	@media (max-width: 768px) {
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	@media (max-width: 480px) {
+		padding: 8px;
+		font-size: 12px;
+	}
 `;
 
 const TableBody = styled.tbody``;
@@ -483,6 +512,16 @@ const TableCell = styled.td`
 	padding: 15px;
 	border-bottom: 1px solid #e0e0e0;
 	color: #2c3e50;
+
+	@media (max-width: 768px) {
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	@media (max-width: 480px) {
+		padding: 8px;
+		font-size: 12px;
+	}
 `;
 
 const ActionButtons = styled.div`
@@ -601,4 +640,12 @@ export const Warehouse = styled(WarehouseContainer)`
 	padding: 20px;
 	max-width: 1200px;
 	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		padding: 15px;
+	}
+
+	@media (max-width: 480px) {
+		padding: 10px;
+	}
 `;

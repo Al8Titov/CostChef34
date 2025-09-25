@@ -3,7 +3,6 @@ import apiService from '../services/api';
 export const getUserDishes = async () => {
 	try {
 		const response = await apiService.getDishes();
-		console.log('Dishes API response:', response);
 		
 		// Извлекаем данные из ответа
 		if (response && response.data && Array.isArray(response.data)) {
@@ -11,7 +10,6 @@ export const getUserDishes = async () => {
 		} else if (Array.isArray(response)) {
 			return response;
 		} else {
-			console.warn('Unexpected dishes response format:', response);
 			return [];
 		}
 	} catch (error) {

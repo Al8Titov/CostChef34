@@ -3,7 +3,6 @@ import apiService from '../services/api';
 export const getUserProducts = async () => {
 	try {
 		const response = await apiService.getProducts();
-		console.log('Products API response:', response);
 		
 		// Извлекаем данные из ответа
 		if (response && response.data && Array.isArray(response.data)) {
@@ -11,7 +10,6 @@ export const getUserProducts = async () => {
 		} else if (Array.isArray(response)) {
 			return response;
 		} else {
-			console.warn('Unexpected products response format:', response);
 			return [];
 		}
 	} catch (error) {
@@ -22,9 +20,7 @@ export const getUserProducts = async () => {
 
 export const createProduct = async (productData) => {
 	try {
-		console.log('Отправляем данные продукта:', productData);
-		const response = await apiService.createProduct(productData);
-		console.log('Продукт создан:', response);
+            const response = await apiService.createProduct(productData);
 		
 		// Извлекаем данные из ответа
 		if (response && response.data) {

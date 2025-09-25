@@ -11,11 +11,6 @@ const UsersContainer = ({ className }) => {
 	const currentUser = useSelector((state) => state.user);
 	const { users, loading, error, refreshUsers } = useUsers();
 	
-	// Отладочная информация
-	console.log('Users component - currentUser:', currentUser);
-	console.log('Users component - users:', users);
-	console.log('Users component - loading:', loading);
-	console.log('Users component - error:', error);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [editForm, setEditForm] = useState({
@@ -83,10 +78,6 @@ const UsersContainer = ({ className }) => {
 	};
 
 	const handleDeleteUser = async (userId) => {
-		console.log('Попытка удаления пользователя:', userId);
-		console.log('Текущий пользователь:', currentUser);
-		console.log('Все пользователи:', users);
-		
 		if (!userId) {
 			alert('Ошибка: ID пользователя не определен');
 			return;
@@ -293,11 +284,31 @@ const TableContainer = styled.div`
 	overflow: hidden;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 	margin-bottom: 40px;
+
+	@media (max-width: 768px) {
+		border-radius: 10px;
+		margin-bottom: 20px;
+		overflow-x: auto;
+	}
+
+	@media (max-width: 480px) {
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
 `;
 
 const Table = styled.table`
 	width: 100%;
 	border-collapse: collapse;
+	min-width: 600px;
+
+	@media (max-width: 768px) {
+		min-width: 500px;
+	}
+
+	@media (max-width: 480px) {
+		min-width: 400px;
+	}
 `;
 
 const TableHeader = styled.thead`
@@ -541,5 +552,13 @@ export const Users = styled(UsersContainer)`
 	padding: 20px;
 	max-width: 1200px;
 	margin: 0 auto;
+
+	@media (max-width: 768px) {
+		padding: 15px;
+	}
+
+	@media (max-width: 480px) {
+		padding: 10px;
+	}
 `;
 

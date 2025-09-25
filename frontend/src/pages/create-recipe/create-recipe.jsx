@@ -784,4 +784,14 @@ export const CreateRecipe = styled(CreateRecipeContainer)`
 	max-width: 1200px;
 	margin: 0 auto;
 	min-height: calc(100vh - 200px);
+
+	@media (max-width: 768px) {
+		padding: 15px;
+		min-height: calc(100vh - 160px);
+	}
+
+	@media (max-width: 480px) {
+		padding: 10px;
+		min-height: calc(100vh - 140px);
+	}
 `;

@@ -122,6 +122,19 @@ const HeroSection = styled.section`
 	gap: 60px;
 	margin-bottom: 80px;
 	padding: 40px 0;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		gap: 30px;
+		margin-bottom: 40px;
+		padding: 20px 0;
+	}
+
+	@media (max-width: 480px) {
+		gap: 20px;
+		margin-bottom: 30px;
+		padding: 15px 0;
+	}
 `;
 
 const HeroContent = styled.div`
@@ -135,6 +148,16 @@ const HeroTitle = styled.h1`
 	color: #2c3e50;
 	margin-bottom: 20px;
 	line-height: 1.2;
+
+	@media (max-width: 768px) {
+		font-size: 36px;
+		text-align: center;
+	}
+
+	@media (max-width: 480px) {
+		font-size: 28px;
+		margin-bottom: 15px;
+	}
 `;
 
 const HeroSubtitle = styled.h2`
@@ -161,6 +184,12 @@ const FutureFeatures = styled.p`
 const AuthButtons = styled.div`
 	display: flex;
 	gap: 20px;
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+		gap: 10px;
+		align-items: center;
+	}
 `;
 
 const ActionButtons = styled.div`
@@ -203,6 +232,16 @@ const FeaturesGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 30px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 20px;
+	}
+
+	@media (max-width: 480px) {
+		grid-template-columns: 1fr;
+		gap: 15px;
+	}
 `;
 
 const FeatureCard = styled.div`

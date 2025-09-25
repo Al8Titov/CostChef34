@@ -80,7 +80,6 @@ class ApiService {
 
   async getProducts() {
     const result = await this.request('/products');
-    console.log('API getProducts result:', result);
     return result;
   }
 
@@ -106,7 +105,6 @@ class ApiService {
 
   async getDishes() {
     const result = await this.request('/dishes');
-    console.log('API getDishes result:', result);
     return result;
   }
 

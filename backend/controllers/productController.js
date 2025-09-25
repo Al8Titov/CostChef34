@@ -15,11 +15,9 @@ export const getProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
-    console.log('Received product data:', req.body);
     
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log('Validation errors:', errors.array());
       const errorMessage = errors.array().map(err => err.msg).join(', ');
       return res.status(400).json({ error: errorMessage });
     }
