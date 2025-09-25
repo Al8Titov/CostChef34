@@ -5,11 +5,11 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - NODE_ENV=production
-      - PORT=3001
-      - MONGODB_URI=mongodb+srv://Buck:Trevogavjope@cluster0.ruk1ewc.mongodb.net/costchef
-      - JWT_SECRET=your-super-secret-jwt-key-here-change-in-production
-      - CORS_ORIGIN=http://109.73.198.35
+      NODE_ENV: production
+      PORT: 3001
+      MONGODB_URI: mongodb+srv://Buck:Trevogavjope@cluster0.ruk1ewc.mongodb.net/costchef
+      JWT_SECRET: your-super-secret-jwt-key-here-change-in-production
+      CORS_ORIGIN: http://109.73.198.35
     restart: unless-stopped
     networks:
       - costchef-network
@@ -20,7 +20,7 @@ services:
     ports:
       - "80:80"
     environment:
-      - VITE_API_URL=http://109.73.198.35:3001/api
+      VITE_API_URL: http://109.73.198.35:3001/api
     depends_on:
       - backend
     restart: unless-stopped
