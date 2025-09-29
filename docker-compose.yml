@@ -9,7 +9,7 @@ services:
       PORT: 3002
       MONGODB_URI: mongodb+srv://Buck:Trevogavjope@cluster0.ruk1ewc.mongodb.net/costchef
       JWT_SECRET: your-super-secret-jwt-key-here-change-in-production
-      CORS_ORIGIN: http://109.73.198.35
+      CORS_ORIGIN: https://costchef.ru
     restart: unless-stopped
     networks:
       - costchef-network
@@ -20,7 +20,7 @@ services:
     ports:
       - "80:80"
     environment:
-      VITE_API_URL: /api
+      VITE_API_URL: https://costchef.ru/api
     depends_on:
       - backend
     restart: unless-stopped
